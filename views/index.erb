@@ -8,7 +8,7 @@
         <p>bo=<%= product.best_offer? %>, sp=<%= product.spicy? %>, vg=<%= product.vegetarian? %></p>
  
             <div>
-                <button id="1"  class="btn btn-primary btn-lg btn-block" onclick="addToCart()">Add to cart</button>
+                <button id="1"  class="btn btn-primary btn-lg btn-block" onclick="addToCart(<%= product.id%>)">Add to cart</button>
             </div>
     </div>
     <%end%>

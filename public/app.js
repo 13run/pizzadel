@@ -1,5 +1,5 @@
-function addToCart() {
-    alert('Hello');
+function addToCart(id) {
+    alert(`Pizza ${id}`);
 }
 
 function something() {
