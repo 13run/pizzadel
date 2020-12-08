@@ -1,3 +1,7 @@
+function addToCart() {
+    alert('Hello');
+}
+
 function something() {
     let x = window.localStorage.getItem('a');
     x = x*1 + 1;
@@ -7,3 +11,11 @@ function something() {
     alert(x);
 
 }
+
+
+// const price = document.getElementById('price');
+
+// const formater = new Intl.NumberFormat('ru');
+
+// price.innerText = formater.format(price.value);
+
