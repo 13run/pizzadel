@@ -1,21 +1,33 @@
 function addToCart(id) {
-    alert(`Pizza ${id}`);
-}
+    let key = `product_${id}`;
+    let i = window.localStorage.getItem(key);
 
-function something() {
-    let x = window.localStorage.getItem('a');
-    x = x*1 + 1;
-    window.localStorage.setItem('a', x);
+
+    i = i * 1 + 1;
+    window.localStorage.setItem(key, i);
+    console.log(`addToCart ${key} = ${i}`);
+
+    calculateCartItems();
     
-   
-    alert(x);
-
 }
 
+function calculateCartItems() {
+    let total = 0;
 
-// const price = document.getElementById('price');
+    for (let i = 0; i < window.localStorage.length; i++) {
+        let key = window.localStorage.key(i);
 
-// const formater = new Intl.NumberFormat('ru');
+        if (key.search('product')>=0) {
+  
+            total = total + parseInt(window.localStorage[key]);
 
-// price.innerText = formater.format(price.value);
+        }
+        
+    }
+    let x = document.getElementById('x');
+    x.innerText = total;
+}
 
+window.onload = function(){
+    calculateCartItems();
+}
