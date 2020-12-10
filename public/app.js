@@ -24,10 +24,30 @@ function calculateCartItems() {
         }
         
     }
-    let x = document.getElementById('x');
-    x.innerText = total;
+    $('#x').val('Cart ' + total);
 }
 
 window.onload = function(){
     calculateCartItems();
+    updateOrdersInput ();
+}
+
+function cartGetOrders() {
+    let orders = '';
+
+    for (i=0; i<window.localStorage.length; i++) {
+        let key = window.localStorage.key(i), value = window.localStorage[key];
+
+        if (key.search('product')>= 0) {
+            orders = orders + key + '=' + value +', ';
+        }
+    }
+    return orders;
+}
+
+function updateOrdersInput () {
+    let orders = cartGetOrders();
+
+    $('#orders').val(orders);
+    
 }

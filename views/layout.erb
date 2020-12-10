@@ -19,7 +19,7 @@
 		<div class="wrapper">
 			<div class="container">
 
-			<nav class="navbar  navbar-light navbar-expand-lg navbar-expand-md" style="background-color: #e3f2fd;">
+			<nav class="navbar  navbar-light navbar-expand-sm navbar-expand-lg navbar-expand-md navbar-expand-md" style="background-color: #e3f2fd;">
 			
 				<a class="navbar-brand mt-auto mb-auto"  href="/">
 					<img src="/img/logo.png" width="45" height="38" alt="Pizza Deliver">
@@ -40,8 +40,12 @@
 						<a class="nav-link" href="#">Link</a>
 					</li>
 					</ul>
-					<input type="submit" class="btn btn-lg btn-outline-primary ml-auto" href="/cart"  tabindex="-1" aria-disabled="true" id="x"></input>
-
+					<div class="ml-auto">
+						<form action="/cart" method="POST"> 
+						<input id="orders" style="display: ;"></input>
+						<input type="submit" class="btn btn-lg btn-outline-primary " id="x"></input>
+						</form>
+					</div>
 				</div>
 			</nav>
 
