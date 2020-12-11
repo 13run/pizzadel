@@ -1,0 +1,30 @@
+<table class="table" id="cart_table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Count</th>
+            <th >Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @orders_list.each do |order_item| %>
+        <tr>
+            <td>
+            <img src="<%=Product.find(order_item[0].to_i).path_to_img%>" width="45" height="38"/>
+            <%=Product.find(order_item[0].to_i).title%>
+            </td>
+            <td id="cart_product_<%=Product.find(order_item[0].to_i).id%>" >
+            <input name="cart_count_product_<%=Product.find(order_item[0].to_i).id%>" class="cart_product_count"  type="number"  min="1" value="<%=order_item[1].to_i%>"/>
+            </td>
+            <td class="cart_product_price">
+            <%=Product.find(order_item[0].to_i).price%>
+            </td>
+        </tr>
+        <%end%>
+        <tr>
+            <td></td>
+            <td>Total:</td>
+            <td id="total_price"></td>
+        </tr>
+    </tbody>
+</table>

@@ -29,5 +29,8 @@ get '/product/:id' do
 end
 
 post '/cart' do
-	erb 'hi'
+	@orders_list = params[:orders_list]
+	@orders_list = @orders_list.strip.split(',').map{|order| order.delete('product_').split('=')}
+	
+	erb :cart
 end
