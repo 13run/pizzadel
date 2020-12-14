@@ -1,9 +1,3 @@
-window.onload = function(){
-    calculateCartItems();
-    updateOrdersInput ();
-    cartTotalCounter();
-    totalPriceReloader();
-}
 
 
 function addToCart(id) {
@@ -16,6 +10,7 @@ function addToCart(id) {
     console.log(`addToCart ${key} = ${i}`);
 
     calculateCartItems();
+    updateOrdersInput();
     
 }
 
@@ -48,6 +43,7 @@ function cartGetOrders() {
     }
     return orders;
 }
+cartGetOrders()
 
 function updateOrdersInput () {
     let orders = cartGetOrders();
@@ -55,6 +51,7 @@ function updateOrdersInput () {
     $('#input_orders').val(orders);
     
 }
+updateOrdersInput()
 
 const productCountElements = document.getElementsByClassName('cart_product_count');
 const productPriceElements = document.getElementsByClassName('cart_product_price');
@@ -88,8 +85,15 @@ function cartTotalCounter() {
 function totalPriceReloader() {
 
    [].forEach.call(productCountElements, function (item) {
-        item.addEventListener('input', cartTotalCounter)
-        
+        item.addEventListener('input', cartTotalCounter, console.log(parseInt(item.id)));
+        ;
     })
     
 }
+
+window.onload = function(){
+    calculateCartItems();
+    cartTotalCounter();
+    totalPriceReloader();
+}
+

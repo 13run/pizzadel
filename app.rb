@@ -16,7 +16,7 @@ end
 
 
 get '/' do
-	erb :index
+		erb :index
 end
 
 get '/about' do
@@ -29,8 +29,26 @@ get '/product/:id' do
 end
 
 post '/cart' do
-	@orders_list = params[:orders_list]
-	@orders_list = @orders_list.strip.split(',').map{|order| order.delete('product_').split('=')}
+	orders_list = params[:orders_list].split(/,/)
+
+	
+	
+		products = []
+		orders_list = orders_list.map{|order| order.delete('product_').split('=')}
+		
+		orders_list.each do |order_item|
+			products_item = []
+			product = Product.find(order_item[0].to_i)
+			count = order_item[1].to_i
+			products.push(products_item = [product, count])
+		end
+	
+		
+	
+	
+
+	@cart_list = products
 	
 	erb :cart
 end
+

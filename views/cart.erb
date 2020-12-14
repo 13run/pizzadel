@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  $(function() {
+      updateOrdersInput();
+    });
+</script>
+
 <table class="table" id="cart_table">
     <thead class="thead-dark">
         <tr>
@@ -7,17 +13,17 @@
         </tr>
     </thead>
     <tbody>
-        <% @orders_list.each do |order_item| %>
+        <% @cart_list.each do |order_item| %>
         <tr>
             <td>
-            <img src="<%=Product.find(order_item[0].to_i).path_to_img%>" width="45" height="38"/>
-            <%=Product.find(order_item[0].to_i).title%>
+            <img src="<%=order_item[0].path_to_img%>" width="45" height="38"/>
+            <%=order_item[0].title%>
             </td>
-            <td id="cart_product_<%=Product.find(order_item[0].to_i).id%>" >
-            <input name="cart_count_product_<%=Product.find(order_item[0].to_i).id%>" class="cart_product_count"  type="number"  min="1" value="<%=order_item[1].to_i%>"/>
+            <td id="cart_product_<%=order_item[0].id%>" >
+            <input id="<%=order_item[0].id%>" name="cart_count_product_<%=order_item[0].id%>" class="cart_product_count"  type="number"  min="1" value="<%=order_item[1].to_i%>"/>
             </td>
             <td class="cart_product_price">
-            <%=Product.find(order_item[0].to_i).price%>
+            <%=order_item[0].price%>
             </td>
         </tr>
         <%end%>
@@ -28,3 +34,6 @@
         </tr>
     </tbody>
 </table>
+
+
+<%= @orders_list%>
