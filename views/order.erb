@@ -1,0 +1,43 @@
+<%# <script type="text/javascript">
+  $(function() {
+    let total = document.getElementById('total').innerHTML;
+      formaterTotalPrice(total);
+    });
+</script> %>
+
+<br><%=@order.client_name%>
+<br><%=@order.client_phone%>
+<br><%=@order.client_address%>
+<table class="table" id="cart_table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Count</th>
+            <th >Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @total_price = 0%>
+        <% @cart_list.each do |order_item| %>
+        <tr>
+            <td>
+            <img src="<%=order_item[0].path_to_img%>" width="45" height="38"/>
+            <%=order_item[0].title%>
+            </td>
+            <td>
+            <%=order_item[1].to_i%>
+            </td>
+            <td class="cart_product_price">
+            <%=order_item[0].price%>
+            </td>
+        </tr>
+        <%@total_price += order_item[0].price * order_item[1].to_i%>
+        <%end%>
+        <tr>
+            <td></td>
+            <td>Total:</td>
+            <td id="total"><%=@total_price%></td>
+        </tr>
+    </tbody>
+</table>
+
