@@ -47,8 +47,9 @@ end
 
 post '/cart' do
 	@orders_list = params[:orders_list]
-
 	@cart_list = get_order_list @orders_list
+
+	return erb :cart_is_empty if @cart_list.length == 0
 	
 	erb :cart
 end
@@ -61,4 +62,10 @@ post '/place_order' do
 	@cart_list = get_order_list @order.order
 
 	erb :order_placed
+end
+
+get '/admin' do
+	@orders = Order.order("created_at DESC")
+
+	erb :admin
 end

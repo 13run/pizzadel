@@ -103,9 +103,8 @@ function cancelOrder() {
     return false;
 }
 
-window.onload = function(){
-    calculateCartItems();
-    cartTotalCounter();
-    totalPriceReloader();
-}
-
+// window.onload = function(){
+//     calculateCartItems();
+//     cartTotalCounter();
+//     totalPriceReloader();
+// }
