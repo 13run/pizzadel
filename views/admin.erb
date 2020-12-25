@@ -1,0 +1,30 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Client name</th>
+            <th>Client phone</th>
+            <th>Client address</th>
+            <th>Order Description</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+     <%@orders.each do |order|%>
+        <tr>
+            <td><%= order.client_name%></td>
+            <td><%= order.client_phone%></td>
+            <td><%= order.client_address%></td>
+            <%desription = get_order_list order.order%>
+            <td><%desription.each do |order|%>
+              Product: <%=order[0].title%>, 
+              Price: <%=order[0].price%>, 
+              Size: <%=order[0].size%>, 
+              Qty: <%=order[1].to_i%>
+              <br>
+            <%end%>
+            </td>
+            <td><%= order.created_at%></td>
+        </tr>
+      <%end%>
+    </tbody>
+</table>

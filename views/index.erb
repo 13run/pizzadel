@@ -1,16 +1,27 @@
+<script type="text/javascript">
+  $(function() {
+        updateOrdersInput();
+        calculateCartItems();
+        cartTotalCounter();
+        totalPriceReloader();
+    });
+</script>
+
 <div class="d-flex justify-content-sm-between flex-wrap">
     <% @products.each do |product|%>
     <div class="">
-        <img src="<%=product.path_to_img%>">
-        <p>Pizza: <%= product.title.capitalize %> <%= product.size %>cm</p>
-        <p>Price: <span id="price" type="number" value="<%= product.price %>"><%= product.price %></span></p>
-        <p><%= product.description %></p>
-        <p>bo=<%= product.best_offer? %>, sp=<%= product.spicy? %>, vg=<%= product.vegetarian? %></p>
+        <div>
+            <img src="<%=product.path_to_img%>">
+        </div>
+        <br>
+        <p>Pizza: <%= product.title.capitalize %> Size:<%= product.size %>cm</p>
+        <br><a href="/product/<%= product.id%>">Description</a>
+        <br><span>Price: <%= product.price %> руб.</span>
+        <p><%='Best Offer ' if product.best_offer?%><%='Spicy ' if product.spicy?%><%='Vegetarian' if product.vegetarian?%></p>
  
             <div>
-                <button id="1"  class="btn btn-primary btn-lg btn-block" onclick="addToCart(<%= product.id%>)">Add to cart</button>
+                <button   class="btn btn-primary btn-lg btn-block" onclick="addToCart(<%= product.id%>)">Add to cart</button>
             </div>
     </div>
     <%end%>
 </div>
-<br>

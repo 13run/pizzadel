@@ -1,0 +1,7 @@
+<h2><%= @product.title %></h2>
+<img src="<%= @product.path_to_img %>" alt="<%= @product.title %>">
+<br>
+<br><strong>Description: </strong><%= @product.description %>
+<br><strong id="2">Size: </strong><%=@product.size%> cm
+<br><strong id="1">Price: </strong><%=@product.price%> rub.
+<br><%='Best Offer ' if @product.best_offer?%><%='Spicy ' if @product.spicy?%><%='Vegetarian' if @product.vegetarian?%>

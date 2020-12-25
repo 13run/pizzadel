@@ -1,0 +1,10 @@
+#submit_orders {
+    background:url(../img/logo-cart.png) 11% 50% no-repeat;
+    width: 120px;
+    background-color: #ffffff;
+    padding-left: 44px;
+}
+
+#submit_orders:hover {
+  color: #000000;
+}

@@ -11,14 +11,61 @@ before do
 	@products = Product.all
 end
 
+def get_order_list order_list
+	order_list = order_list.split(/,/)
+	products = []
+	orders_list = order_list.map{|order| order.delete('product_').split('=')}
+	
+	orders_list.each do |order_item|
+		products_item = []
+		product = Product.find(order_item[0].to_i)
+		count = order_item[1].to_i
+		products.push(products_item = [product, count])
+	end
+	products
+
+end
+
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
 
 get '/' do
-	erb :index
+		erb :index
 end
 
 get '/about' do
 	erb :index
+end
+
+get '/product/:id' do
+	@product = Product.find(params[:id])
+	erb :product
+end
+
+post '/cart' do
+	@orders_list = params[:orders_list]
+	@cart_list = get_order_list @orders_list
+
+	return erb :cart_is_empty if @cart_list.length == 0
+	
+	erb :cart
+end
+
+post '/place_order' do
+	@order = Order.new params[:order]
+
+	@order.save
+
+	@cart_list = get_order_list @order.order
+
+	erb :order_placed
+end
+
+get '/admin' do
+	@orders = Order.order("created_at DESC")
+
+	erb :admin
 end
